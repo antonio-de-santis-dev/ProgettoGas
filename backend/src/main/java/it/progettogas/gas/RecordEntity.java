@@ -2,6 +2,7 @@ package it.progettogas.gas;
 
 import jakarta.persistence.*;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 @Table(name = "gas_records")
@@ -26,6 +27,7 @@ public class RecordEntity {
   RecordEntity(String kind, String payload) {
     this.kind = kind;
     this.payload = payload;
-    this.createdAt = Instant.now();
+    // Match database timestamp precision so POST and subsequent GET return identical metadata.
+    this.createdAt = Instant.now().truncatedTo(ChronoUnit.MICROS);
   }
 }

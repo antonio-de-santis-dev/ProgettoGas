@@ -56,6 +56,7 @@ class GasApiTest {
                 .getResponse()
                 .getContentAsString());
     assertThat(stored.path("data").path("result").path("total").asText()).isEqualTo("392.61");
+    assertThat(stored).isEqualTo(e.path("comparison"));
     var bytes =
         mvc.perform(get("/api/confronti/" + id + "/pdf"))
             .andExpect(status().isOk())
