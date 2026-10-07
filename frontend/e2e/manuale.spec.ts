@@ -39,6 +39,6 @@ test("inserimento manuale di profilo, offerta e bolletta gas", async ({ page }) 
     await expect(page.getByRole("region", { name: "Risultato del confronto" })).toContainText("80,52");
     await expect(page.getByRole("region", { name: "Risultato del confronto" })).toContainText("39,48");
     const json = page.waitForEvent("download");
-    await page.getByRole("button", { name: "Scarica JSON" }).click();
+    await page.getByRole("button", { name: "Scarica PDF" }).click();
     expect(await (await json).failure()).toBeNull();
 });

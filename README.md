@@ -27,13 +27,13 @@ Per fermare: `docker compose down`. Non usare `down -v` sui dati che vuoi conser
 
 ## Le sette sezioni
 
-1. **Confronto**: selezione bolletta, offerta e profilo; totale, risparmio/maggior costo, grafico, categorie e dettaglio mensile; PDF, CSV, JSON e stampa. Puoi caricare quattro esempi storici di regressione.
+1. **Confronto**: selezione bolletta, offerta e profilo; totale, risparmio/maggior costo, grafico, categorie e dettaglio mensile; download PDF nell’intestazione del risultato. Puoi caricare quattro esempi storici di regressione.
 2. **Bollette clienti**: cliente/ragione sociale, PDR di 14 cifre, partita IVA opzionale, riferimento, fornitore precedente, importo fatturato e altre partite. Da 1 a 24 mesi consecutivi, Smc, quote mensili frazionarie, PSV, profilo per periodo, scaglioni e override motivati.
 3. **Offerte**: prezzo fisso o PSV + spread, QVD fissa, CCR e QVD variabile; creazione, modifica, duplicazione, eliminazione e revisioni.
 4. **Parametri gestore**: 15 voci standard, voci aggiuntive, scaglioni selezionabili, validità, fonte, stato bozza/pubblicato/archiviato e responsabile approvazione. Un profilo pubblicato è immutabile: duplica per una nuova versione. Sono bloccate sovrapposizioni di validità fra profili pubblicati dello stesso fornitore/area.
-5. **Fonti ufficiali**: registrazione manuale del PSV verificato con mese, fonte, motivo e revisioni. Nessun feed esterno aggiorna automaticamente aliquote o tariffe. Il PSV del confronto si inserisce esplicitamente anche nei periodi della bolletta.
+5. **Fonti ufficiali**: catalogo delle pubblicazioni ARERA, GME, ADM e dei riferimenti regionali, filtrabile per indici, tariffe e imposte. Archivio PSV con mese, fonte, motivo e revisioni; inserimento e modifica in finestra dedicata. Nessun feed esterno aggiorna automaticamente aliquote o tariffe. Il PSV del confronto si inserisce esplicitamente anche nei periodi della bolletta.
 6. **Impostazioni PDF**: quattro stili, colori, logo PNG/JPG, dati consulente, anteprima delle pagine e salvataggio nel database. Il PDF reale utilizza il confronto salvato; il PDF di esempio usa clienti sintetici.
-7. **Storico**: ricerca per cliente/offerta/profilo/operatore override, filtro data e stato, apertura snapshot e duplicazione dei dati cliente.
+7. **Storico**: ricerca per cliente/offerta/profilo/operatore override, filtro data e stato, apertura del confronto salvato e download PDF.
 
 ## Calcolo
 

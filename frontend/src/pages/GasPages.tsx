@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Plus, FileText, Tags, SlidersHorizontal, ArrowRight, ArrowLeftRight } from "lucide-react";
+import { Plus, FileText, Tags, SlidersHorizontal, ArrowRight, ArrowLeftRight, Download, CheckCircle2 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import Decimal from "decimal.js";
+import { errorePdf, verificaPdf } from "../components/pdfPersonalizzazione";
 import { api, messaggioErrore, useLista } from "../api";
 import { Titolo, Campo, Decimale, Dialogo, Errore, Caricamento, Vuoto } from "../components/ui";
 import { OfferFields, BillFields, ProfileFields, EntityForm } from "./GasForms";
-import { categories, bill, offer, profile, euro, number, negative, absolute, sum, type Saved, type Offer, type Bill, type Profile, type Comparison, type Source, type Category } from "../domain";
+import { categories, bill, offer, profile, euro, number, negative, absolute, sum, type Saved, type Offer, type Bill, type Profile, type Comparison, type Category } from "../domain";
+export { default as FontiPage } from "./GasFontiPage";
 function Listing<T>({ kind, title, description, create, fields, name, details }: {
     kind: string;
     title: string;
@@ -53,31 +55,27 @@ export function Risultato({ saved }: {
     saved: Saved<Comparison>;
 }) {
     const [error, setError] = useState("");
+    const [pdfBusy, setPdfBusy] = useState(false);
     const c = saved.data, r = c.result, more = negative(r.differenceRaw);
-    async function download(format: string) { setError(""); try {
-        const response = await api.get(`/confronti/${saved.id}/${format === "pdf" ? "pdf" : "export"}`, { responseType: "blob", params: format === "pdf" ? undefined : { format } });
+    async function download() { setError(""); setPdfBusy(true); try {
+        const response = await api.get(`/confronti/${saved.id}/pdf`, { responseType: "blob" });
+        verificaPdf(response.data);
         const url = URL.createObjectURL(response.data);
         const a = document.createElement("a");
         a.href = url;
-        a.download = `confronto-gas-${saved.id}.${format}`;
+        a.download = `confronto-gas-${saved.id}.pdf`;
         a.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
     catch (e) {
-        setError(messaggioErrore(e));
-    } }
+        setError(await errorePdf(e));
+    } finally { setPdfBusy(false); } }
     const chart = Object.entries(r.categories).map(([k, v]) => ({ name: categories[k as Category], value: new Decimal(v).toNumber() }));
-    return <section className="result" aria-label="Risultato del confronto"><div className="panel-top"><h2>Confronto gas #{saved.id}</h2><span className="badge">{number(r.consumptionSmc)} Smc · {r.months} mesi</span></div>{r.unapproved && <p className="notice">Calcolo con profilo da validare. Le tariffe non sono approvate per uso commerciale.</p>}<div className="result-metrics"><div className="metric"><span>Bolletta attuale</span><strong>{euro(c.bill.previousTotal)}</strong></div><div className="metric"><span>Offerta proposta</span><strong>{euro(r.total)}</strong></div><div className={`metric ${more ? "gas-negative" : ""}`}><span>{more ? "Maggior costo stimato" : "Risparmio nel periodo"}</span><strong>{euro(absolute(r.difference))}</strong><small>{r.percentage === null ? "Percentuale non disponibile" : `${number(absolute(r.percentage), 2)}% ${more ? "in più" : "in meno"}`}</small></div></div><p>{more ? "Maggior costo annuale indicativo" : "Risparmio annuale indicativo"}: <strong>{euro(absolute(r.annual))}</strong></p><p className="help">Proiezione del periodo × 12 / mesi; non considera stagionalità o variazioni future del PSV.</p>
+    return <section className="result" aria-label="Risultato del confronto"><div className="result-banner"><div><span className="badge green"><CheckCircle2 size={14}/>Confronto salvato #{saved.id}</span><h2>{c.bill.client}</h2><p>{c.offer.name} · {r.months} mesi · {number(r.consumptionSmc)} Smc · {c.bill.periods[0].month} → {c.bill.periods.at(-1)?.month}</p></div><div className="result-actions"><span className="result-date">{new Date(saved.createdAt).toLocaleDateString("it-IT")}</span><button className="button primary" disabled={pdfBusy} onClick={download}><Download size={18}/>{pdfBusy ? "Preparazione PDF…" : "Scarica PDF"}</button></div></div>{r.unapproved && <p className="notice">Calcolo con profilo da validare. Le tariffe non sono approvate per uso commerciale.</p>}<div className="result-metrics"><div className="metric"><span>Bolletta attuale</span><strong>{euro(c.bill.previousTotal)}</strong></div><div className="metric"><span>Offerta proposta</span><strong>{euro(r.total)}</strong></div><div className={`metric ${more ? "gas-negative" : ""}`}><span>{more ? "Maggior costo stimato" : "Risparmio nel periodo"}</span><strong>{euro(absolute(r.difference))}</strong><small>{r.percentage === null ? "Percentuale non disponibile" : `${number(absolute(r.percentage), 2)}% ${more ? "in più" : "in meno"}`}</small></div></div><p>{more ? "Maggior costo annuale indicativo" : "Risparmio annuale indicativo"}: <strong>{euro(absolute(r.annual))}</strong></p><p className="help">Proiezione del periodo × 12 / mesi; non considera stagionalità o variazioni future del PSV.</p>
  <div className="result-grid"><div className="panel"><h3>Come si forma il costo</h3><div className="chart"><ResponsiveContainer width="100%" height={280}><BarChart data={chart} layout="vertical"><CartesianGrid strokeDasharray="3 3"/><XAxis type="number"/><YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 10 }} interval={0}/><Tooltip formatter={v => euro(String(v))}/><Bar dataKey="value" name="Costo (€)" isAnimationActive={false} fill="#194D3D" radius={[4, 4, 0, 0]}/></BarChart></ResponsiveContainer></div></div><div className="panel"><dl className="cost-list">{Object.entries(r.categories).map(([k, v]) => <div key={k}><dt>{categories[k as Category]}</dt><dd>{euro(v)}</dd></div>)}<div><dt>Imponibile</dt><dd>{euro(r.taxable)}</dd></div><div><dt>IVA</dt><dd>{euro(r.vat)}</dd></div><div><dt>Non soggetto IVA</dt><dd>{euro(r.nonTaxable)}</dd></div><div><dt>Totale</dt><dd>{euro(r.total)}</dd></div></dl></div></div>
  {c.bill.periods.map(p => <details className="panel" key={p.month}><summary>Come è calcolato · {p.month} · {number(p.consumptionSmc)} Smc</summary><p>{c.profiles[p.month].name} · {c.profiles[p.month].mode} · {c.profiles[p.month].source}</p><div className="table-scroll"><table><thead><tr><th>Voce</th><th>Quantità</th><th>Tariffa</th><th>Importo</th><th>IVA</th><th>Scaglione e origine</th></tr></thead><tbody>{r.rows.filter(l => l.month === p.month).map(l => <tr key={l.code}><td>{l.label}</td><td>{number(l.quantity)} {l.unit === "€/Smc" ? "Smc" : l.unit === "€/PDR/mese" ? "mesi" : ""}</td><td>{number(l.rate, 12)} {l.unit}</td><td>{euro(l.amount)}</td><td>{euro(l.vat)}</td><td>{l.band}<small>{l.origin}</small></td></tr>)}</tbody></table></div></details>)}
  {r.audit.length > 0 && <details className="panel"><summary>Override tariffari registrati · {r.audit.length}</summary>{r.audit.map((a, i) => <p key={i}>{a.month} · {a.code}: {number(a.original, 12)} → {number(a.updated, 12)} · {a.reason} · {a.operator} · {new Date(a.timestamp).toLocaleString("it-IT")}</p>)}</details>}
- <details className="panel"><summary>Precisione e snapshot</summary><p>Totale raw: {r.totalRaw} € · Differenza raw: {r.differenceRaw} € · Motore {c.engineVersion}</p><p>I valori dello storico non cambiano dopo modifiche a offerte, bollette o profili. I prezzi delle righe sono conservati con la loro origine.</p></details>{error && <Errore message={error}/>}<div className="actions">{["pdf", "csv", "json"].map(f => <button key={f} className="button secondary" onClick={() => download(f)}>Scarica {f.toUpperCase()}</button>)}<button className="button secondary" onClick={() => window.print()}>Stampa</button><button className="button secondary" onClick={async () => { try {
-        await api.post(`/confronti/${saved.id}/duplica`);
-        setError("Copia della bolletta creata: disponibile in Bollette clienti.");
-    }
-    catch (e) {
-        setError(messaggioErrore(e));
-    } }}>Duplica dati cliente</button></div></section>;
+ <details className="panel"><summary>Precisione e snapshot</summary><p>Totale raw: {r.totalRaw} € · Differenza raw: {r.differenceRaw} € · Motore {c.engineVersion}</p><p>I valori dello storico non cambiano dopo modifiche a offerte, bollette o profili. I prezzi delle righe sono conservati con la loro origine.</p></details>{error && <Errore message={error}/>}</section>;
 }
 export function ConfrontoPage() {
     const bills = useLista<Saved<Bill>>("/bollette"), offers = useLista<Saved<Offer>>("/offerte"), profiles = useLista<Saved<Profile>>("/parametri"), examples = useLista<{
@@ -118,29 +116,4 @@ export function StoricoPage() {
     const list = useLista<Saved<Comparison>>("/confronti");
     const [search, setSearch] = useState(""), [date, setDate] = useState(""), [status, setStatus] = useState(""), [selected, setSelected] = useState<Saved<Comparison> | null>(null);
     return <><Titolo eyebrow="Confronti conservati" title="Storico confronti gas" description="Ogni risultato conserva bolletta, offerta, tariffe e modifiche manuali usate nel calcolo."/><div className="form-grid three"><Campo label="Cerca cliente, offerta, profilo o operatore" value={search} onChange={e => setSearch(e.target.value)}/><Campo label="Data del confronto" type="date" value={date} onChange={e => setDate(e.target.value)}/><label className="field"><span>Stato tariffe</span><select value={status} onChange={e => setStatus(e.target.value)}><option value="">Tutti</option><option value="draft">Da validare</option><option value="approved">Approvate</option></select></label></div>{list.error && <Errore message={list.error}/>} {list.loading ? <Caricamento /> : <div className="gas-list">{list.data.filter(s => JSON.stringify([s.data.bill.client, s.data.offer.name, Object.values(s.data.profiles).map(p => p.name), s.data.result.audit.map(a => a.operator)]).toLowerCase().includes(search.toLowerCase()) && (!date || s.createdAt.slice(0, 10) === date) && (!status || (status === "draft") === s.data.result.unapproved)).map(s => <article className="panel" key={s.id}><div className="panel-top"><h2>#{s.id} · {s.data.bill.client}</h2><button className="button secondary" onClick={() => setSelected(s)}>Apri</button></div><p>{new Date(s.createdAt).toLocaleString("it-IT")} · {s.data.offer.name} · {euro(s.data.result.total)}</p><span className="badge">{s.data.result.unapproved ? "Da validare" : "Approvato"}</span></article>)}</div>}{selected && <Risultato saved={selected}/>}</>;
-}
-export function FontiPage() {
-    const list = useLista<Saved<Source>>("/fonti");
-    const [value, setValue] = useState<Source>({ month: "", psv: "", source: "", reason: "" }), [edit, setEdit] = useState<Saved<Source> | null>(null), [error, setError] = useState(""), [notice, setNotice] = useState(""), [audit, setAudit] = useState<unknown[] | null>(null), [busy, setBusy] = useState(false);
-    return <><Titolo eyebrow="Fonti e riferimenti" title="Fonti ufficiali gas" description="Registra il PSV verificato con fonte, mese e motivazione. Le tariffe fiscali restano nei profili del gestore."/><p className="notice">Gli allegati contengono valori storici. Nessun prezzo viene inventato o aggiornato automaticamente. Per offerte indicizzate inserisci il PSV verificato anche nel periodo della bolletta.</p>{error && <Errore message={error}/>} {notice && <p className="notice" role="status">{notice}</p>}<form className="panel" onSubmit={async (e) => { e.preventDefault(); setBusy(true); setError(""); try {
-        if (edit)
-            await api.put(`/fonti/${edit.id}`, { data: value, version: edit.version });
-        else
-            await api.post("/fonti", { data: value });
-        setEdit(null);
-        setValue({ month: "", psv: "", source: "", reason: "" });
-        list.reload();
-        setNotice("Fonte salvata.");
-    }
-    catch (e) {
-        setError(messaggioErrore(e));
-    }
-    finally {
-        setBusy(false);
-    } }}><h2>{edit ? "Modifica fonte" : "Aggiungi riferimento PSV"}</h2><div className="form-grid"><Campo label="Mese PSV" required type="month" value={value.month} onChange={e => setValue({ ...value, month: e.target.value })}/><Decimale label="PSV (€/Smc)" required value={value.psv} onChange={e => setValue({ ...value, psv: e.target.value })}/><Campo label="Fonte verificata" required value={value.source} onChange={e => setValue({ ...value, source: e.target.value })}/><Campo label="Motivo / riferimento" required value={value.reason} onChange={e => setValue({ ...value, reason: e.target.value })}/></div><button className="button primary" disabled={busy}>Salva fonte</button></form>{list.loading ? <Caricamento /> : list.data.map(r => <article className="panel" key={r.id}><h2>{r.data.month} · {number(r.data.psv, 12)} €/Smc</h2><p>{r.data.source} · {r.data.reason}</p><div className="actions"><button className="button secondary" onClick={() => { setEdit(r); setValue(r.data); }}>Modifica</button><button className="text-button" onClick={async () => { try {
-        setAudit((await api.get(`/fonti/${r.id}/revisioni`)).data);
-    }
-    catch (e) {
-        setError(messaggioErrore(e));
-    } }}>Revisioni</button></div></article>)}{audit && <Dialogo title="Revisioni della fonte" onClose={() => setAudit(null)}><pre className="raw-json">{JSON.stringify(audit, null, 2)}</pre></Dialogo>}</>;
 }

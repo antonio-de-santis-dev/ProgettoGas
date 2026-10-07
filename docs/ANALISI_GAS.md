@@ -65,3 +65,18 @@ GET/PUT /api/impostazioni-pdf e POST /api/impostazioni-pdf/anteprima condividono
 GET /api/esempi elenca gli scenari e il controllo raw; POST /api/esempi/{nome} li carica con clienti sintetici.
 
 Docker espone soltanto frontend su 127.0.0.1:8090. Backend e PostgreSQL non hanno porte pubblicate. Nginx applica CSP e header di sicurezza, inoltra /api e gestisce SPA; volume PostgreSQL dedicato. Lo script avvia.sh genera una password database casuale se assente.
+
+## Revisione interfaccia e fonti pubbliche — 7 ottobre 2026
+
+Il risultato espone soltanto Scarica PDF nell’intestazione, accanto alla data, come Progetto Luce. Rimossi i comandi CSV, JSON, stampa e duplicazione cliente dal risultato e dallo storico.
+
+Fonti ufficiali mantiene la grafica esistente e presenta un catalogo filtrabile, separato dall’archivio dei riferimenti PSV manuali. Il modulo di inserimento/modifica è in una finestra dedicata; i record già salvati e le loro revisioni restano compatibili.
+
+Pubblicazioni verificate:
+- ARERA CMEMm: https://www.arera.it/area-operatori/prezzi-e-tariffe/valore-cmemm-vulnerabili — media mensile PSV day ahead per il servizio di tutela della vulnerabilità, con unità e PCS di riferimento; non è automaticamente l’indice di ogni contratto libero.
+- ARERA tariffe: https://www.arera.it/area-operatori/prezzi-e-tariffe/tariffe-di-distribuzione-misura-oneri-generali — distribuzione, misura e oneri; occorre scegliere periodo e ambito applicabili.
+- GME IG Index: https://www.mercatoelettrico.org/Home/Pubblicazioni/Indici-GME/IGIndexGmeEsiti — indice di mercato distinto; non sostituisce automaticamente il PSV contrattuale.
+- ADM: https://www.adm.gov.it/portale/accise — normativa e aliquote sulle accise.
+- Regione Puglia: https://www.regione.puglia.it/web/tributi/arisgan — esempio di fonte regionale per l’addizionale; le altre regioni vanno verificate sul proprio portale.
+
+Questa revisione offre consultazione delle pubblicazioni e archivio manuale, senza importazioni automatiche o sostituzioni dei valori nei confronti.
