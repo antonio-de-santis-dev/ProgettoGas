@@ -1,0 +1,1543 @@
+[
+  {
+    "name": "GENNAIO-FEBBRAIO",
+    "expectedRaw": "392.605125844",
+    "bill": {
+      "client": "Cliente demo 1",
+      "pdr": "00000000000001",
+      "partitaIva": "",
+      "supplier": "Fornitore demo",
+      "reference": "Test GENNAIO-FEBBRAIO — anno tecnico 2024",
+      "previousTotal": "582.83",
+      "otherTaxable": "0",
+      "otherNonTaxable": "0",
+      "periods": [
+        {
+          "month": "2024-01",
+          "consumptionSmc": "197",
+          "fixedMonths": "1",
+          "profileId": null,
+          "psv": null,
+          "chosenBands": {},
+          "overrides": {}
+        },
+        {
+          "month": "2024-02",
+          "consumptionSmc": "135",
+          "fixedMonths": "1",
+          "profileId": null,
+          "psv": null,
+          "chosenBands": {},
+          "overrides": {
+            "COMMODITY": {
+              "rate": "0.397889",
+              "reason": "Tariffa storica del secondo periodo del foglio GENNAIO-FEBBRAIO; anno tecnico 2024 non certificato",
+              "operator": "Import fixture storica"
+            }
+          }
+        }
+      ]
+    },
+    "offer": {
+      "name": "Esempio GENNAIO-FEBBRAIO",
+      "provider": "Gestore storico — da validare",
+      "type": "FIXED",
+      "price": "0.433736",
+      "spread": "0",
+      "qvdFixed": "5.28",
+      "ccr": "0.044596",
+      "qvdVariable": "0.007946",
+      "active": true,
+      "notes": "Tariffe storiche di regressione, non tariffa commerciale attuale"
+    },
+    "profiles": [
+      {
+        "name": "Storico GENNAIO-FEBBRAIO · periodo 1",
+        "provider": "Gestore storico — da validare",
+        "area": "Fixture Excel",
+        "validFrom": "2024-01-01",
+        "validTo": "2024-12-31",
+        "status": "DRAFT",
+        "mode": "SOURCE_COMPATIBILITY",
+        "vatRate": "22",
+        "source": "Workbook fornito, foglio GENNAIO-FEBBRAIO, celle C53:E73. Anno tecnico 2024 per prova.",
+        "approvedBy": "",
+        "lines": [
+          {
+            "code": "QVD_FIXED",
+            "label": "QVD quota fissa",
+            "category": "COMMODITY",
+            "basis": "FIXED_MONTH",
+            "rate": "5.28",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "COMMODITY",
+            "label": "Prezzo materia prima",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.433736",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "CCR",
+            "label": "Componente CCR",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.044596",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "QVD_VAR",
+            "label": "QVD quota variabile",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.007946",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "DIST_FIXED",
+            "label": "Quota fissa distribuzione",
+            "category": "TRANSPORT",
+            "basis": "FIXED_MONTH",
+            "rate": "5.49",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "DIST_VAR",
+            "label": "Distribuzione per scaglione",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.1130081",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota distribuzione scaglione 3 (121-480)"
+          },
+          {
+            "code": "QT",
+            "label": "Componente trasporto QT",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.128966",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RS",
+            "label": "Componente RS",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.001186",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG1",
+            "label": "Componente UG1",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.014455",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_FIXED",
+            "label": "Quota fissa UG2",
+            "category": "SYSTEM",
+            "basis": "FIXED_MONTH",
+            "rate": "-2.1775",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RE",
+            "label": "Componente RE",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.012695",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG3",
+            "label": "Componente UG3",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.004638",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_VAR",
+            "label": "UG2 per scaglione",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.0462",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota UG2 (121-480)"
+          },
+          {
+            "code": "EXCISE",
+            "label": "Accisa gas",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.038",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Accisa Gas (121-480)"
+          },
+          {
+            "code": "LOCAL_ADDITION",
+            "label": "Addizionale enti locali",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.03098",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Addizionali enti locali (120-480)"
+          }
+        ],
+        "bands": []
+      },
+      {
+        "name": "Storico GENNAIO-FEBBRAIO · periodo 2",
+        "provider": "Gestore storico — da validare",
+        "area": "Fixture Excel",
+        "validFrom": "2024-01-01",
+        "validTo": "2024-12-31",
+        "status": "DRAFT",
+        "mode": "SOURCE_COMPATIBILITY",
+        "vatRate": "22",
+        "source": "Workbook fornito, foglio GENNAIO-FEBBRAIO, celle C103:E123. Anno tecnico 2024 per prova.",
+        "approvedBy": "",
+        "lines": [
+          {
+            "code": "QVD_FIXED",
+            "label": "QVD quota fissa",
+            "category": "COMMODITY",
+            "basis": "FIXED_MONTH",
+            "rate": "5.28",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "COMMODITY",
+            "label": "Prezzo materia prima",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.397889",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "CCR",
+            "label": "Componente CCR",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.044596",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "QVD_VAR",
+            "label": "QVD quota variabile",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.007946",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "DIST_FIXED",
+            "label": "Quota fissa distribuzione",
+            "category": "TRANSPORT",
+            "basis": "FIXED_MONTH",
+            "rate": "5.49",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "DIST_VAR",
+            "label": "Distribuzione per scaglione",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.1130081",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota distribuzione scaglione 3 (121-480)"
+          },
+          {
+            "code": "QT",
+            "label": "Componente trasporto QT",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.128966",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RS",
+            "label": "Componente RS",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.001186",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG1",
+            "label": "Componente UG1",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.014455",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_FIXED",
+            "label": "Quota fissa UG2",
+            "category": "SYSTEM",
+            "basis": "FIXED_MONTH",
+            "rate": "-2.1775",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RE",
+            "label": "Componente RE",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.012695",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG3",
+            "label": "Componente UG3",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.004638",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_VAR",
+            "label": "UG2 per scaglione",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.0462",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota UG2 (121-480)"
+          },
+          {
+            "code": "EXCISE",
+            "label": "Accisa gas",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.175",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Accisa Gas (121-480)"
+          },
+          {
+            "code": "LOCAL_ADDITION",
+            "label": "Addizionale enti locali",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.03098",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Addizionali enti locali (120-480)"
+          }
+        ],
+        "bands": []
+      }
+    ]
+  },
+  {
+    "name": "FEBBRAIO-MARZO",
+    "expectedRaw": "896.419863600",
+    "bill": {
+      "client": "Cliente demo 2",
+      "pdr": "00000000000001",
+      "partitaIva": "",
+      "supplier": "Fornitore demo",
+      "reference": "Test FEBBRAIO-MARZO — anno tecnico 2024",
+      "previousTotal": "905.15",
+      "otherTaxable": "0",
+      "otherNonTaxable": "0",
+      "periods": [
+        {
+          "month": "2024-02",
+          "consumptionSmc": "493",
+          "fixedMonths": "1",
+          "profileId": null,
+          "psv": null,
+          "chosenBands": {},
+          "overrides": {}
+        },
+        {
+          "month": "2024-03",
+          "consumptionSmc": "493",
+          "fixedMonths": "1",
+          "profileId": null,
+          "psv": null,
+          "chosenBands": {},
+          "overrides": {
+            "COMMODITY": {
+              "rate": "0.37459",
+              "reason": "Tariffa storica del secondo periodo del foglio FEBBRAIO-MARZO; anno tecnico 2024 non certificato",
+              "operator": "Import fixture storica"
+            }
+          }
+        }
+      ]
+    },
+    "offer": {
+      "name": "Esempio FEBBRAIO-MARZO",
+      "provider": "Gestore storico — da validare",
+      "type": "FIXED",
+      "price": "0.36495",
+      "spread": "0",
+      "qvdFixed": "8.95",
+      "ccr": "0.044596",
+      "qvdVariable": "0.007946",
+      "active": true,
+      "notes": "Tariffe storiche di regressione, non tariffa commerciale attuale"
+    },
+    "profiles": [
+      {
+        "name": "Storico FEBBRAIO-MARZO · periodo 1",
+        "provider": "Gestore storico — da validare",
+        "area": "Fixture Excel",
+        "validFrom": "2024-01-01",
+        "validTo": "2024-12-31",
+        "status": "DRAFT",
+        "mode": "SOURCE_COMPATIBILITY",
+        "vatRate": "22",
+        "source": "Workbook fornito, foglio FEBBRAIO-MARZO, celle C53:E73. Anno tecnico 2024 per prova.",
+        "approvedBy": "",
+        "lines": [
+          {
+            "code": "QVD_FIXED",
+            "label": "QVD quota fissa",
+            "category": "COMMODITY",
+            "basis": "FIXED_MONTH",
+            "rate": "8.95",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "COMMODITY",
+            "label": "Prezzo materia prima",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.36495",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "CCR",
+            "label": "Componente CCR",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.044596",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "QVD_VAR",
+            "label": "QVD quota variabile",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.007946",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "DIST_FIXED",
+            "label": "Quota fissa distribuzione",
+            "category": "TRANSPORT",
+            "basis": "FIXED_MONTH",
+            "rate": "5.49",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "DIST_VAR",
+            "label": "Distribuzione per scaglione",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.048388",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota distribuzione scaglione 3 (481-1560)"
+          },
+          {
+            "code": "QT",
+            "label": "Componente trasporto QT",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.128966",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RS",
+            "label": "Componente RS",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.001186",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG1",
+            "label": "Componente UG1",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.014455",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_FIXED",
+            "label": "Quota fissa UG2",
+            "category": "SYSTEM",
+            "basis": "FIXED_MONTH",
+            "rate": "-2.1775",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RE",
+            "label": "Componente RE",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.012695",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG3",
+            "label": "Componente UG3",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.004638",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_VAR",
+            "label": "UG2 per scaglione",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.0273",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota UG2(481-1560)"
+          },
+          {
+            "code": "EXCISE",
+            "label": "Accisa gas",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.038",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Accisa sul gas "
+          },
+          {
+            "code": "LOCAL_ADDITION",
+            "label": "Addizionale enti locali",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.03098",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Addizionale enti locali (<120)"
+          }
+        ],
+        "bands": []
+      },
+      {
+        "name": "Storico FEBBRAIO-MARZO · periodo 2",
+        "provider": "Gestore storico — da validare",
+        "area": "Fixture Excel",
+        "validFrom": "2024-01-01",
+        "validTo": "2024-12-31",
+        "status": "DRAFT",
+        "mode": "SOURCE_COMPATIBILITY",
+        "vatRate": "22",
+        "source": "Workbook fornito, foglio FEBBRAIO-MARZO, celle C103:E123. Anno tecnico 2024 per prova.",
+        "approvedBy": "",
+        "lines": [
+          {
+            "code": "QVD_FIXED",
+            "label": "QVD quota fissa",
+            "category": "COMMODITY",
+            "basis": "FIXED_MONTH",
+            "rate": "8.95",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "COMMODITY",
+            "label": "Prezzo materia prima",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.37459",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "CCR",
+            "label": "Componente CCR",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.044596",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "QVD_VAR",
+            "label": "QVD quota variabile",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.007946",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "DIST_FIXED",
+            "label": "Quota fissa distribuzione",
+            "category": "TRANSPORT",
+            "basis": "FIXED_MONTH",
+            "rate": "5.49",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "DIST_VAR",
+            "label": "Distribuzione per scaglione",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.048388",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota distribuzione scaglione "
+          },
+          {
+            "code": "QT",
+            "label": "Componente trasporto QT",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.128966",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RS",
+            "label": "Componente RS",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.001186",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG1",
+            "label": "Componente UG1",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.014455",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_FIXED",
+            "label": "Quota fissa UG2",
+            "category": "SYSTEM",
+            "basis": "FIXED_MONTH",
+            "rate": "-2.1775",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RE",
+            "label": "Componente RE",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.012695",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG3",
+            "label": "Componente UG3",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.004638",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_VAR",
+            "label": "UG2 per scaglione",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.0221",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota UG2 scaglione 3(1561-5000)"
+          },
+          {
+            "code": "EXCISE",
+            "label": "Accisa gas",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.038",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Accisa Gas (121-480)"
+          },
+          {
+            "code": "LOCAL_ADDITION",
+            "label": "Addizionale enti locali",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.019",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Addizionale enti locali "
+          }
+        ],
+        "bands": []
+      }
+    ]
+  },
+  {
+    "name": "MARZO-APRILE",
+    "expectedRaw": "408.429692774",
+    "bill": {
+      "client": "Cliente demo 3",
+      "pdr": "00000000000001",
+      "partitaIva": "",
+      "supplier": "Fornitore demo",
+      "reference": "Test MARZO-APRILE — anno tecnico 2024",
+      "previousTotal": "582.83",
+      "otherTaxable": "0",
+      "otherNonTaxable": "0",
+      "periods": [
+        {
+          "month": "2024-03",
+          "consumptionSmc": "197",
+          "fixedMonths": "1",
+          "profileId": null,
+          "psv": null,
+          "chosenBands": {},
+          "overrides": {}
+        },
+        {
+          "month": "2024-04",
+          "consumptionSmc": "135",
+          "fixedMonths": "1",
+          "profileId": null,
+          "psv": null,
+          "chosenBands": {},
+          "overrides": {
+            "COMMODITY": {
+              "rate": "0.44317",
+              "reason": "Tariffa storica del secondo periodo del foglio MARZO-APRILE; anno tecnico 2024 non certificato",
+              "operator": "Import fixture storica"
+            }
+          }
+        }
+      ]
+    },
+    "offer": {
+      "name": "Esempio MARZO-APRILE",
+      "provider": "Gestore storico — da validare",
+      "type": "FIXED",
+      "price": "0.407491",
+      "spread": "0",
+      "qvdFixed": "5.28",
+      "ccr": "0.044596",
+      "qvdVariable": "0.007946",
+      "active": true,
+      "notes": "Tariffe storiche di regressione, non tariffa commerciale attuale"
+    },
+    "profiles": [
+      {
+        "name": "Storico MARZO-APRILE · periodo 1",
+        "provider": "Gestore storico — da validare",
+        "area": "Fixture Excel",
+        "validFrom": "2024-01-01",
+        "validTo": "2024-12-31",
+        "status": "DRAFT",
+        "mode": "SOURCE_COMPATIBILITY",
+        "vatRate": "22",
+        "source": "Workbook fornito, foglio MARZO-APRILE, celle C53:E73. Anno tecnico 2024 per prova.",
+        "approvedBy": "",
+        "lines": [
+          {
+            "code": "QVD_FIXED",
+            "label": "QVD quota fissa",
+            "category": "COMMODITY",
+            "basis": "FIXED_MONTH",
+            "rate": "5.28",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "COMMODITY",
+            "label": "Prezzo materia prima",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.407491",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "CCR",
+            "label": "Componente CCR",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.044596",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "QVD_VAR",
+            "label": "QVD quota variabile",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.007946",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "DIST_FIXED",
+            "label": "Quota fissa distribuzione",
+            "category": "TRANSPORT",
+            "basis": "FIXED_MONTH",
+            "rate": "5.49",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "DIST_VAR",
+            "label": "Distribuzione per scaglione",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.1130081",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota distribuzione scaglione 3 (121-480)"
+          },
+          {
+            "code": "QT",
+            "label": "Componente trasporto QT",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.128966",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RS",
+            "label": "Componente RS",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.001186",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG1",
+            "label": "Componente UG1",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.014455",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_FIXED",
+            "label": "Quota fissa UG2",
+            "category": "SYSTEM",
+            "basis": "FIXED_MONTH",
+            "rate": "-2.1775",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RE",
+            "label": "Componente RE",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.012695",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG3",
+            "label": "Componente UG3",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.004638",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_VAR",
+            "label": "UG2 per scaglione",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.0462",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota UG2 (121-480)"
+          },
+          {
+            "code": "EXCISE",
+            "label": "Accisa gas",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.175",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Accisa Gas (121-480)"
+          },
+          {
+            "code": "LOCAL_ADDITION",
+            "label": "Addizionale enti locali",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.03098",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Addizionali enti locali (120-480)"
+          }
+        ],
+        "bands": []
+      },
+      {
+        "name": "Storico MARZO-APRILE · periodo 2",
+        "provider": "Gestore storico — da validare",
+        "area": "Fixture Excel",
+        "validFrom": "2024-01-01",
+        "validTo": "2024-12-31",
+        "status": "DRAFT",
+        "mode": "SOURCE_COMPATIBILITY",
+        "vatRate": "22",
+        "source": "Workbook fornito, foglio MARZO-APRILE, celle C103:E123. Anno tecnico 2024 per prova.",
+        "approvedBy": "",
+        "lines": [
+          {
+            "code": "QVD_FIXED",
+            "label": "QVD quota fissa",
+            "category": "COMMODITY",
+            "basis": "FIXED_MONTH",
+            "rate": "5.28",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "COMMODITY",
+            "label": "Prezzo materia prima",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.44317",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "CCR",
+            "label": "Componente CCR",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.044596",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "QVD_VAR",
+            "label": "QVD quota variabile",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.007946",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "DIST_FIXED",
+            "label": "Quota fissa distribuzione",
+            "category": "TRANSPORT",
+            "basis": "FIXED_MONTH",
+            "rate": "5.49",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "DIST_VAR",
+            "label": "Distribuzione per scaglione",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.048388",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota distribuzione scaglione 3 (121-480)"
+          },
+          {
+            "code": "QT",
+            "label": "Componente trasporto QT",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.128966",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RS",
+            "label": "Componente RS",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.001186",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG1",
+            "label": "Componente UG1",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.014455",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_FIXED",
+            "label": "Quota fissa UG2",
+            "category": "SYSTEM",
+            "basis": "FIXED_MONTH",
+            "rate": "-2.1775",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RE",
+            "label": "Componente RE",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.012695",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG3",
+            "label": "Componente UG3",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.004638",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_VAR",
+            "label": "UG2 per scaglione",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota UG2 (121-480)"
+          },
+          {
+            "code": "EXCISE",
+            "label": "Accisa gas",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.175",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Accisa Gas (121-480)"
+          },
+          {
+            "code": "LOCAL_ADDITION",
+            "label": "Addizionale enti locali",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.03098",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Addizionali enti locali (120-480)"
+          }
+        ],
+        "bands": []
+      }
+    ]
+  },
+  {
+    "name": "APRILE-MAGGIO",
+    "expectedRaw": "659.773269640",
+    "bill": {
+      "client": "Cliente demo 4",
+      "pdr": "00000000000001",
+      "partitaIva": "",
+      "supplier": "Fornitore demo",
+      "reference": "Test APRILE-MAGGIO — anno tecnico 2024",
+      "previousTotal": "553.44",
+      "otherTaxable": "0",
+      "otherNonTaxable": "0",
+      "periods": [
+        {
+          "month": "2024-04",
+          "consumptionSmc": "275",
+          "fixedMonths": "1",
+          "profileId": null,
+          "psv": null,
+          "chosenBands": {},
+          "overrides": {}
+        },
+        {
+          "month": "2024-05",
+          "consumptionSmc": "154",
+          "fixedMonths": "1",
+          "profileId": null,
+          "psv": null,
+          "chosenBands": {},
+          "overrides": {
+            "QVD_FIXED": {
+              "rate": "8.95",
+              "reason": "Tariffa storica del secondo periodo del foglio APRILE-MAGGIO; anno tecnico 2024 non certificato",
+              "operator": "Import fixture storica"
+            },
+            "COMMODITY": {
+              "rate": "0.55046",
+              "reason": "Tariffa storica del secondo periodo del foglio APRILE-MAGGIO; anno tecnico 2024 non certificato",
+              "operator": "Import fixture storica"
+            }
+          }
+        }
+      ]
+    },
+    "offer": {
+      "name": "Esempio APRILE-MAGGIO",
+      "provider": "Gestore storico — da validare",
+      "type": "FIXED",
+      "price": "0.66059",
+      "spread": "0",
+      "qvdFixed": "8",
+      "ccr": "0.044596",
+      "qvdVariable": "0.007946",
+      "active": true,
+      "notes": "Tariffe storiche di regressione, non tariffa commerciale attuale"
+    },
+    "profiles": [
+      {
+        "name": "Storico APRILE-MAGGIO · periodo 1",
+        "provider": "Gestore storico — da validare",
+        "area": "Fixture Excel",
+        "validFrom": "2024-01-01",
+        "validTo": "2024-12-31",
+        "status": "DRAFT",
+        "mode": "SOURCE_COMPATIBILITY",
+        "vatRate": "22",
+        "source": "Workbook fornito, foglio APRILE-MAGGIO, celle C53:E73. Anno tecnico 2024 per prova.",
+        "approvedBy": "",
+        "lines": [
+          {
+            "code": "QVD_FIXED",
+            "label": "QVD quota fissa",
+            "category": "COMMODITY",
+            "basis": "FIXED_MONTH",
+            "rate": "8",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "COMMODITY",
+            "label": "Prezzo materia prima",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.66059",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "CCR",
+            "label": "Componente CCR",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.044596",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "QVD_VAR",
+            "label": "QVD quota variabile",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.007946",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "DIST_FIXED",
+            "label": "Quota fissa distribuzione",
+            "category": "TRANSPORT",
+            "basis": "FIXED_MONTH",
+            "rate": "5.49",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "DIST_VAR",
+            "label": "Distribuzione per scaglione",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.107806",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota distribuzione scaglione "
+          },
+          {
+            "code": "QT",
+            "label": "Componente trasporto QT",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.128966",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RS",
+            "label": "Componente RS",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.001186",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG1",
+            "label": "Componente UG1",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.014355",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_FIXED",
+            "label": "Quota fissa UG2",
+            "category": "SYSTEM",
+            "basis": "FIXED_MONTH",
+            "rate": "-2.1775",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RE",
+            "label": "Componente RE",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.012695",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG3",
+            "label": "Componente UG3",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.004638",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_VAR",
+            "label": "UG2 per scaglione",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.0462",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota UG2 (0-120)"
+          },
+          {
+            "code": "EXCISE",
+            "label": "Accisa gas",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.175",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Accisa Gas (<120)"
+          },
+          {
+            "code": "LOCAL_ADDITION",
+            "label": "Addizionale enti locali",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.03098",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Addizionale enti locali "
+          }
+        ],
+        "bands": []
+      },
+      {
+        "name": "Storico APRILE-MAGGIO · periodo 2",
+        "provider": "Gestore storico — da validare",
+        "area": "Fixture Excel",
+        "validFrom": "2024-01-01",
+        "validTo": "2024-12-31",
+        "status": "DRAFT",
+        "mode": "SOURCE_COMPATIBILITY",
+        "vatRate": "22",
+        "source": "Workbook fornito, foglio APRILE-MAGGIO, celle C103:E123. Anno tecnico 2024 per prova.",
+        "approvedBy": "",
+        "lines": [
+          {
+            "code": "QVD_FIXED",
+            "label": "QVD quota fissa",
+            "category": "COMMODITY",
+            "basis": "FIXED_MONTH",
+            "rate": "8.95",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "COMMODITY",
+            "label": "Prezzo materia prima",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.55046",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "CCR",
+            "label": "Componente CCR",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.044596",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "QVD_VAR",
+            "label": "QVD quota variabile",
+            "category": "COMMODITY",
+            "basis": "SMC",
+            "rate": "0.007946",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "10",
+            "band": ""
+          },
+          {
+            "code": "DIST_FIXED",
+            "label": "Quota fissa distribuzione",
+            "category": "TRANSPORT",
+            "basis": "FIXED_MONTH",
+            "rate": "5.49",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "DIST_VAR",
+            "label": "Distribuzione per scaglione",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.107806",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota distribuzione scaglione "
+          },
+          {
+            "code": "QT",
+            "label": "Componente trasporto QT",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.128966",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RS",
+            "label": "Componente RS",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.001186",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG1",
+            "label": "Componente UG1",
+            "category": "TRANSPORT",
+            "basis": "SMC",
+            "rate": "0.014555",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_FIXED",
+            "label": "Quota fissa UG2",
+            "category": "SYSTEM",
+            "basis": "FIXED_MONTH",
+            "rate": "2.1775",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "RE",
+            "label": "Componente RE",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.012695",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG3",
+            "label": "Componente UG3",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.004638",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": ""
+          },
+          {
+            "code": "UG2_VAR",
+            "label": "UG2 per scaglione",
+            "category": "SYSTEM",
+            "basis": "SMC",
+            "rate": "0.0462",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Quota UG2 (0-120)"
+          },
+          {
+            "code": "EXCISE",
+            "label": "Accisa gas",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.175",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Accisa Gas (<120)"
+          },
+          {
+            "code": "LOCAL_ADDITION",
+            "label": "Addizionale enti locali",
+            "category": "TAX",
+            "basis": "SMC",
+            "rate": "0.03098",
+            "vatTreatment": "GLOBAL",
+            "vatRate": "22",
+            "band": "Addizionale enti locali "
+          }
+        ],
+        "bands": []
+      }
+    ]
+  }
+]
